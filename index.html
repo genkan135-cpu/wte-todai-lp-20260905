@@ -1,0 +1,514 @@
+<title>Wrapping The Earth 全文原稿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --paper:#FAFAFB; --surface:#FFFFFF; --sunk:#F1F2F5;
+    --ink:#1B1F27; --ink-2:#454C59; --ink-3:#767E8C;
+    --rule:#DFE2E8; --rule-soft:#EAECF0;
+    --accent:#1F3A6E; --accent-soft:#E8EDF6;
+    --gold:#94722A; --gold-soft:#F4EEDF;
+    --alert:#9E2F2A; --alert-soft:#F8E9E7;
+    --f-disp:"Shippori Mincho",-apple-system,"Hiragino Mincho ProN","Yu Mincho",serif;
+    --f-body:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --paper:#14171C; --surface:#1B1F26; --sunk:#22262E;
+    --ink:#E9EBEF; --ink-2:#B3BAC6; --ink-3:#7E8798;
+    --rule:#333944; --rule-soft:#2A2F38;
+    --accent:#8FAEDD; --accent-soft:#1E2838;
+    --gold:#D6B267; --gold-soft:#2A2519;
+    --alert:#E5928B; --alert-soft:#2E1C1A;
+  }}
+  :root[data-theme="dark"]{
+    --paper:#14171C; --surface:#1B1F26; --sunk:#22262E;
+    --ink:#E9EBEF; --ink-2:#B3BAC6; --ink-3:#7E8798;
+    --rule:#333944; --rule-soft:#2A2F38;
+    --accent:#8FAEDD; --accent-soft:#1E2838;
+    --gold:#D6B267; --gold-soft:#2A2519;
+    --alert:#E5928B; --alert-soft:#2E1C1A;
+  }
+
+  *{box-sizing:border-box;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--f-body);
+    font-size:15.5px;line-height:1.95;margin:0;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:860px;margin:0 auto;padding:52px 24px 120px;}
+
+  .mast{border-bottom:2px solid var(--ink);padding-bottom:24px;margin-bottom:14px;}
+  .eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gold);margin:0 0 12px;}
+  h1{font-family:var(--f-disp);font-weight:700;font-size:clamp(27px,4.2vw,38px);
+    line-height:1.35;margin:0 0 12px;text-wrap:balance;}
+  .lede{color:var(--ink-2);margin:0;max-width:62ch;font-size:15px;}
+  .meta{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;
+    font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);}
+  .meta b{color:var(--ink-2);font-weight:500;}
+
+  .howto{background:var(--sunk);border-left:3px solid var(--gold);
+    padding:16px 20px;margin:0 0 44px;font-size:14px;color:var(--ink-2);}
+  .howto b{color:var(--ink);}
+
+  .sec{margin-bottom:14px;background:var(--surface);border:1px solid var(--rule);}
+  .sec > header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+    padding:18px 26px;border-bottom:1px solid var(--rule-soft);background:var(--sunk);}
+  .sec > header .n{font-family:var(--f-mono);font-size:11.5px;color:var(--gold);
+    letter-spacing:.1em;flex:none;}
+  .sec > header h2{font-family:var(--f-disp);font-weight:700;font-size:17px;
+    margin:0;line-height:1.5;flex:1 1 auto;min-width:0;text-wrap:balance;}
+  .sec > header .badge{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;
+    padding:.25em .6em;border-radius:2px;background:var(--accent-soft);
+    color:var(--accent);flex:none;}
+  .sec > .body{padding:26px;}
+
+  .body p{margin:0 0 1.15em;max-width:64ch;}
+  .body p:last-child{margin-bottom:0;}
+  .body h3{font-family:var(--f-disp);font-size:17px;font-weight:700;
+    margin:34px 0 12px;line-height:1.55;text-wrap:balance;}
+  .body h3:first-child{margin-top:0;}
+  .body h4{font-family:var(--f-body);font-size:14.5px;font-weight:700;
+    margin:26px 0 8px;color:var(--ink);}
+  .body ul{margin:0 0 1.15em;padding-left:1.25em;max-width:64ch;}
+  .body li{margin-bottom:.35em;}
+  .lead-in{font-family:var(--f-disp);font-size:19px;line-height:1.7;
+    font-weight:500;color:var(--ink);}
+
+  .spec{border-top:1px solid var(--rule-soft);margin:0 0 1.15em;}
+  .spec div{display:grid;grid-template-columns:8.5em 1fr;gap:0 14px;
+    padding:9px 0;border-bottom:1px solid var(--rule-soft);}
+  .spec dt{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3);
+    letter-spacing:.05em;padding-top:4px;}
+  .spec dd{margin:0;min-width:0;}
+
+  .pull{border-left:3px solid var(--accent);background:var(--accent-soft);
+    padding:14px 20px;margin:0 0 1.15em;}
+  .pull p{margin:0;font-family:var(--f-disp);font-size:17px;line-height:1.7;
+    font-weight:500;max-width:none;}
+
+  .voice{border-top:1px solid var(--rule-soft);padding-top:18px;margin-top:22px;}
+  .voice:first-of-type{border-top:0;padding-top:0;margin-top:0;}
+  .voice .who{font-weight:700;margin:0 0 6px;}
+  .voice .who span{font-weight:400;color:var(--ink-3);font-size:13.5px;}
+  .voice blockquote{margin:0;color:var(--ink-2);border-left:2px solid var(--rule);
+    padding-left:16px;max-width:62ch;}
+
+  .ret{border-top:1px solid var(--rule);padding-top:22px;margin-top:26px;}
+  .ret:first-child{border-top:0;padding-top:0;margin-top:0;}
+  .ret .price{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;
+    color:var(--gold);margin:0 0 4px;font-variant-numeric:tabular-nums;}
+  .ret h4{margin:0 0 10px;font-size:15.5px;}
+  .fine{font-size:13px;color:var(--ink-3);}
+
+  .faq{border-top:1px solid var(--rule-soft);padding-top:16px;margin-top:16px;}
+  .faq:first-child{border-top:0;padding-top:0;margin-top:0;}
+  .faq p.q{font-weight:700;margin:0 0 5px;}
+  .faq p.a{margin:0;color:var(--ink-2);}
+
+  .tablewrap{overflow-x:auto;margin:0 0 1.15em;}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:420px;}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--rule-soft);vertical-align:top;}
+  th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-3);
+    font-weight:500;border-bottom:1px solid var(--rule);}
+  td.n{font-variant-numeric:tabular-nums;font-family:var(--f-mono);white-space:nowrap;}
+
+  .flag{font-family:var(--f-mono);font-size:10.5px;color:var(--alert);
+    background:var(--alert-soft);padding:.15em .5em;border-radius:2px;white-space:nowrap;}
+  mark{background:var(--gold-soft);color:var(--ink);padding:.08em .25em;border-radius:2px;}
+
+  .open{border-left:3px solid var(--alert);background:var(--surface);
+    border:1px solid var(--rule);border-left:3px solid var(--alert);
+    padding:20px 24px;margin-top:44px;}
+  .open h2{font-family:var(--f-disp);font-size:18px;margin:0 0 12px;font-weight:700;}
+  .open ul{margin:0;padding-left:1.2em;}
+  .open li{margin-bottom:.6em;color:var(--ink-2);}
+  .open li b{color:var(--ink);}
+
+  a{color:var(--accent);word-break:break-all;}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+  @media (max-width:560px){
+    .spec div{grid-template-columns:1fr;gap:2px;}
+    .sec > .body{padding:20px;}
+    .sec > header{padding:16px 20px;}
+  }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">CAMPFIRE Project 965944 — Full Copy v1.0</p>
+  <h1>東京大学・安田講堂へ｜文京区の中高生とご家族100名を招待したい</h1>
+  <p class="lede">改稿をすべて反映した、CAMPFIREページ本文の全文原稿。画像・図版は別途差し込み。渡邉英徳教授を背骨に据え、招待対象を文京区の中高生とご家族へ切り替えた最新版です。</p>
+  <div class="meta">
+    <span><b>公開予定</b> 2026-09-13</span>
+    <span><b>本番</b> 2026-10-18（日）16:00 安田講堂</span>
+    <span><b>募集終了</b> 2026-10-31</span>
+    <span><b>作成</b> 2026-09-05</span>
+  </div>
+</header>
+
+<div class="howto">
+  <b>この原稿の読み方</b>　セクション番号は改稿後の並びです（<b>03 が新設</b>、以降が1つずつ繰り下がります）。<span class="flag">要確認</span> の付いた箇所は、事実確認が済んでから確定してください。<b>末尾に未確定リストをまとめています。</b>
+</div>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">01</span><h2>自己紹介 ── 私たちについて</h2></header>
+  <div class="body">
+    <p>皆様、はじめまして。公益財団法人教育文化セキュリティ財団です。</p>
+    <p>私たちは「文化と逢縁（おうえん）を紡ぎ、後世へ繋ぐ」をミッションに、2020年9月に設立された公益財団法人です。文化財とテクノロジー、エンターテインメントを掛け合わせ、文化を次世代へ届ける活動を行っています。</p>
+    <p>これまで、築地本願寺、水間観音、三井寺金堂、迎賓館赤坂離宮でのプロジェクションマッピング、根津神社での文化体験フェス、羽田空港や大阪・関西万博での文化発信など、歴史ある場所と現代の表現・デジタル技術を結ぶプロジェクトを重ねてきました。</p>
+    <p class="fine">※当財団は、2026年8月1日付で「公益財団法人クロノス保全財団」から「公益財団法人教育文化セキュリティ財団」へ名称を変更しました。過去の実績には、旧名義で実施したものを含みます。</p>
+
+    <h3>文化財 × テクノロジー × エンターテインメント</h3>
+    <p>私たちは、文化をただ「守る」だけではなく、現代の人々が実際に触れ、感じ、楽しめる体験として次世代へつなぐことを大切にしています。</p>
+    <p>歴史ある文化財に、デジタル技術や音楽、アートなどを掛け合わせることで、これまで文化に触れる機会の少なかった若い世代にも、その魅力を届けてきました。</p>
+    <p>そして今回、2026年10月18日、東京大学・安田講堂で「Wrapping The Earth in 東京大学」を開催します。</p>
+    <p class="fine">What's Wrapping The Earth? ─ YouTubeで活動の様子をご覧いただけます。</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">02</span><h2>イベントの概要 ─ Wrapping The Earth in 東京大学</h2></header>
+  <div class="body">
+    <div class="pull"><p>紡ぐ人が、未来を奏でる。<br>AIリテラシーと文化をつなぐ、文化継承チャリティーライブ。</p></div>
+
+    <p><mark>2027年に創立150周年を迎える東京大学。その節目に向けて</mark>、150年にわたり積み重ねられてきた知の象徴である安田講堂を舞台に、チャリティーイベント「Wrapping The Earth in 東京大学」を開催します。</p>
+    <p>主催者である私たち公益財団法人教育文化セキュリティ財団（公益認定済）が、「東京大学 情報学環 渡邉英徳教授」と「東京大学フォイヤーヴェルク管弦楽団」との連携のもとで開催します。</p>
+
+    <h4>開催概要</h4>
+    <div class="spec">
+      <div><dt>イベント名</dt><dd>Wrapping The Earth in 東京大学（チャリティーイベント）</dd></div>
+      <div><dt>テーマ</dt><dd>文化継承 × AIリテラシー</dd></div>
+      <div><dt>日時</dt><dd>2026年10月18日（日） 開演 16:00 ／ 終演 20:00（予定）</dd></div>
+      <div><dt>会場</dt><dd>東京大学 安田講堂（東京都文京区本郷7-3-1）</dd></div>
+      <div><dt>主催</dt><dd>公益財団法人教育文化セキュリティ財団</dd></div>
+      <div><dt>共催・連携</dt><dd>東京大学大学院 情報学環 渡邉英徳研究室 ／ 東京大学フォイヤーヴェルク管弦楽団</dd></div>
+      <div><dt>企画・制作協力<br>クラファン運営</dt><dd>株式会社クロノス財団</dd></div>
+    </div>
+
+    <h3>当日のプログラム ─ 音楽と対話が、安田講堂に響く。</h3>
+    <p>第一線で活躍するアーティストによるライブ。東京大学の学生による弦楽合奏。そして、AIリテラシー・文化保全・地域・チャリティーをめぐる対話。この日だけの表現が、安田講堂に集います。</p>
+
+    <h4>ライブ・パフォーマンス</h4>
+    <p>窪塚洋介（俳優・アーティスト／当日司会）、DOZAN11（三木道三）、高木琢也（OCEAN TOKYO）ほか、各界の皆様の参加を予定しています。<span class="flag">実名掲載範囲 要確認</span></p>
+
+    <h4>トークセッション</h4>
+    <p>文化保全、AIリテラシー、地域連携、チャリティー。異なる立場から、未来へつなぐ方法を考えます。</p>
+    <ul>
+      <li>渡邉英徳（東京大学 情報学環 教授）</li>
+      <li>福田健次（福岡県中間市長）</li>
+      <li>宮橋勝栄（石川県小松市長）</li>
+      <li>前田晋太郎（山口県下関市長）</li>
+    </ul>
+
+    <h4>弦楽合奏</h4>
+    <p>東京大学フォイヤーヴェルク管弦楽団のメンバー約10名による弦楽合奏。当日限りのスペシャルライブを、安田講堂でお届けします。</p>
+    <p class="fine">※出演者・登壇者・プログラム内容は、会場条件や関係者調整により変更となる場合があります。決定次第、活動報告にてお知らせします。</p>
+
+    <h3>なぜ今「文化継承 × AIリテラシー」を語るのか</h3>
+    <p>これからの子どもたちは、AI（人工知能）を使うことが当たり前の社会を生きていきます。そこで問われるのは、技術をうまく使えるかどうかよりも、<b>何を大切にし、何を残し、誰のために使うのか</b>という判断です。</p>
+    <p>その判断のよりどころになるのが、文化です。受け継がれてきた音楽、祭り、工芸、美意識、そして語り継がれてきた記憶。それらに触れた経験は、目の前の便利さに流されず、未来に残すものを選び取るための物差しになります。</p>
+    <p>いま「AIによって人間固有の表現や文化、職が奪われるのではないか」という漠然とした不安が広がっているのも事実です。しかし私たちは問いかけます。<b>もし、テクノロジーが文化を壊す敵ではなく、未来へ届ける味方だとしたら。</b></p>
+    <p>子どもたちに必要なのは、「AIを使わせないこと」ではありません。AIを正しく扱い、人間としての倫理観と感性を持った世代が社会を支えるようになれば、テクノロジーは文化を脅かす存在から、文化を世界へ発信し、持続可能に未来へ残すための強力な道具へと変わります。</p>
+    <p>着物、畳、伝統工芸、地域の祭りや音。AIとともに文化を守る術を身につけたとき、これらは過去の遺物ではなく、未来を選ぶための感性の資産になります。だからこそ私たちは、「文化継承」と「AIリテラシー」を切り離さず、一つの学びとして育てていきます。</p>
+    <p><b>AIは、文化の脅威にも、文化の継ぎ手にもなります。決めるのは、使う人の感性です。</b></p>
+
+    <h3>なぜ、東京大学・安田講堂なのか</h3>
+    <p>知の象徴であり、時代の節目を見つめ続けてきた東京大学・安田講堂。</p>
+    <p>東京大学の学生によるクラシック演奏、アーティストによる音楽、研究者や各界のリーダーによる対話が同じ舞台で交わることで、文化を「見るもの」から「自分たちで未来へつなぐもの」へ。そのきっかけとなる一夜をつくります。</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">03</span><h2>なぜ、この夜が生まれたのか ─ 根津神社から、安田講堂へ</h2><span class="badge">新設</span></header>
+  <div class="body">
+    <p class="lead-in">2026年5月、国重要文化財・根津神社。</p>
+    <p>私たちは、楼門をプロジェクションマッピングで包み、歌を重ね、AIリテラシー体験と御神木アートを並べた文化体験フェス「Wrapping The Earth in 根津神社」を開催しました。文化を「見るもの」から「参加するもの」へひらく試みでした。</p>
+
+    <p class="lead-in">そして、その場所で出会ったのが、東京大学 情報学環の渡邉英徳教授です。</p>
+
+    <p>渡邉教授は、デジタルアーカイブ研究の第一人者です。ヒロシマ・アーカイブ、ナガサキ・アーカイブ、沖縄戦デジタルアーカイブ。東日本大震災の記録を時空間の上に重ねる震災アーカイブ。そして、白黒写真をAIでカラー化し、それを体験されたご本人との対話を通じて色を補正していく「記憶の解凍」。岩手日報社との共同研究「忘れない」は、<b>2016年度日本新聞協会賞</b>を受賞しています。</p>
+    <p>戦争の記憶も、災害の記憶も、放っておけば失われます。渡邉教授は、それをデジタル技術で「いま」に呼び戻し、次の世代が自分ごととして受け取れる形に変える仕事を、長く続けてこられました。<b>私たちが「文化継承 × AIリテラシー」を掲げるとき、その手本になっているのは、この仕事です。</b></p>
+
+    <p><b>根津でのご縁は、その日限りでは終わりませんでした。</b>私たちは今も、渡邉教授とともに<mark>根津神社のデジタルアーカイブ（3D記録）の制作を進めています</mark>。<span class="flag">公表可否 要確認</span></p>
+
+    <p>一方で私たちは、東大基金への寄付を通じ、VR・AR・AIといった先端技術と若い世代の力で、災害の記憶を保存・共有し、未来の備えとして活かす活動を支援してきました。記録を残すことは、過去を閉じ込めることではありません。次の世代が学び、問い直し、同じ出来事を繰り返さないための選択肢を増やすことです。</p>
+    <p><b>2027年、東京大学は創立150周年を迎えます。</b>150年にわたり積み重ねられてきた知が社会とつながり、次の世代へ受け渡されていく。その節目に向けた大学との関わりのなかから、この安田講堂での一夜が生まれました。</p>
+
+    <p>そして、その理念に共鳴してくださったのが、<b>窪塚洋介さん、DOZAN11（三木道三）さん</b>をはじめとする表現者の方々です。さらに当日は、<b>福田健次さん（福岡県中間市長）、宮橋勝栄さん（石川県小松市長）、前田晋太郎さん（山口県下関市長）</b>が登壇し、地域から文化と教育をどう未来へつなぐかを語り合います。</p>
+
+    <div class="pull"><p>一つの神社での出会いが、研究者へ、大学へ、表現者へ、そして地域へと連なって、この夜になりました。<br>私たちが「逢縁（おうえん）」と呼んでいるのは、こういうことです。</p></div>
+
+    <p>──そして、その輪の続きに、この街の中高生100名をお招きしたいと考えています。</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">04</span><h2>クラウドファンディングの目的 ─ ONE SEAT, ONE FUTURE.</h2><span class="badge">全面改稿</span></header>
+  <div class="body">
+    <p class="lead-in">この講堂と同じ街に暮らす、文京区の中高生とご家族100名を招待したい。</p>
+
+    <p>安田講堂があるのは、東京都文京区本郷。その半径数キロの中に、中学校があり、高校があり、この街で育つ子どもたちの毎日があります。通学路からも、あの時計台は見えている。<b>それなのに、中に入ったことのある子は、ほとんどいません。</b></p>
+
+    <p>当財団は、この公演にあたり、<mark>すでに50名分の招待枠を用意しています</mark>。<span class="flag">内訳・確定度 要確認</span> このクラウドファンディングで、その輪をさらに100名分ひろげたい。<b>あわせて150名</b>を、安田講堂の客席へお招きします。</p>
+
+    <p>お招きするのは、<b>文京区の中高生と、そのご家族</b>です。終演は20時。夜の本郷を、親子で一緒に帰っていただきたいからです。文化は、誰かから誰かへ手渡されることで残っていく。<b>その最初の受け渡しは、家庭の中で起きる</b>と、私たちは考えています。</p>
+
+    <p>音楽、文化、AI、そして第一線で活躍する人々の言葉。進路も将来も、これから決めていく世代にとって、この一夜が新しい世界に出会うきっかけになることを願っています。</p>
+
+    <div class="pull"><p>1万円のご支援で、ひとりの中高生の席が生まれます。<br>（ご家族の同伴席は、当財団が負担します）</p></div>
+    <p class="fine"><span class="flag">同伴席の財団負担 要決裁</span></p>
+
+    <p>「自分は会場へ行けなくても、地元の子どもたちにこの体験を届けたい。」そんな一人ひとりの応援が、次の世代へつながっていく。それこそが、私たちの考える「逢縁（OUEN）」です。</p>
+
+    <h4>招待の内訳</h4>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>枠</th><th>人数</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td>当財団による既存枠</td><td class="n">50名</td><td>本公演に先立ち、当財団が用意</td></tr>
+          <tr><td>本クラウドファンディング枠</td><td class="n">100名</td><td>皆様のご支援でお招きします</td></tr>
+          <tr><td><b>合計</b></td><td class="n"><b>150名</b></td><td>文京区の中高生を、安田講堂へ</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">05</span><h2>登壇者・出演者からのメッセージ</h2><span class="badge">順序変更</span></header>
+  <div class="body">
+    <p class="lead-in">「なぜ、この夜に集まるのか。」</p>
+    <p>学術、文化、エンターテインメント、行政。異なる領域の第一線で活躍し、このプロジェクトの理念に強く共鳴した方々からのメッセージをご紹介します。</p>
+
+    <div class="voice">
+      <p class="who">渡邉 英徳 教授 <span>／ 東京大学大学院 情報学環・学際情報学府</span></p>
+      <blockquote>記憶や文化は、ただ大切に仕舞い込むだけでは失われていきます。デジタル技術やAIを新しい「筆」として活用し、若い世代がそれを使って自ら文化を記録し、世界へ伝える。その最初の一歩となる安田講堂での体験と、その後のデジタルアーカイブ化を、ぜひ皆様と一緒に作り上げたいと考えています。</blockquote>
+    </div>
+
+    <div class="voice">
+      <p class="who">窪塚 洋介 氏 <span>／ 俳優・アーティスト（当日司会）</span></p>
+      <blockquote>言葉や音楽をはじめ多様な表現がひとつの大きな流れとなり、次の時代へと受け継がれていく。安田講堂という歴史ある知の象徴で、これからを生きる若者たちと共にその圧倒的な可能性を分かち合えることを楽しみにしています。一人の力だけではなく、みんなの小さな選択や情熱を集めて、一緒に今を生きましょう。</blockquote>
+    </div>
+
+    <div class="voice">
+      <p class="who">DOZAN11（三木道三）氏 <span>／ アーティスト</span></p>
+      <blockquote>「Lifetime Respect」──敬意を払い、受け継ぎ、残していくこと。時代が変わろうとも変わらない大切な想いを、音楽と言葉を通して若者たちへ届けていきます。若い世代が自分の文化に誇りを持ち、新しい技術を使って表現できる未来を応援したい。</blockquote>
+    </div>
+
+    <p class="fine" style="margin-top:22px;"><span class="flag">追加検討</span> 3市長のいずれかからコメントをいただけると、「地域から文化をつなぐ」という論点に実体が伴います。</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">06</span><h2>これまでの実績 ─ 文化を、体験にしてきた</h2></header>
+  <div class="body">
+    <p>公益財団法人教育文化セキュリティ財団は、これまでも「文化とテクノロジーの融合」「エンターテインメントを通じた社会還元」を軸に、多くの著名アーティストや企業、自治体とともに実績を積み重ねてきました。</p>
+
+    <h3>起点 ── 国重要文化財・根津神社『Wrapping The Earth』（2026年5月）</h3>
+    <p>伝統ある根津神社を舞台に、楼門プロジェクションマッピング、歌、AIリテラシー体験、御神木アートで文化を包み込んだ体験フェス。<b>今回の安田講堂公演は、この根津での出会いから生まれています。</b>（詳しくは 03 をご覧ください）</p>
+
+    <h4>羽田空港「WAKURABA〜和蔵場〜」× KARA・知英 氏</h4>
+    <p>「ONE WORLD」プロジェクトの一環として、日本の空の玄関口で文化的アート展示やコラボレーションを展開。能登半島の復興支援と文化遺産保全へつなぐ取り組みです。</p>
+
+    <h4>羽田空港 × GACKT 氏 × ユネスコ記憶遺産・三井寺</h4>
+    <p>三井寺の文化遺産とGACKT氏の表現力を掛け合わせ、羽田エアポートガーデンにて大型書作品展示・文化保全プロジェクトを開催しました。</p>
+
+    <h4>大阪・関西万博 UAEパビリオン『文化的 SYO 保全』</h4>
+    <p>世界的イベントの舞台で、日本の伝統的な「書（SYO）」とテクノロジーを融合させたプロジェクトを発表し、国際的な発信を行いました。</p>
+
+    <h4>そのほか</h4>
+    <p>築地本願寺、水間観音、三井寺金堂、迎賓館赤坂離宮でのプロジェクションマッピング。元宝塚歌劇団・沙央くらま氏による葛飾北斎の美意識を現代へ届ける企画など。</p>
+
+    <h3>Wrapping The Earth ── 地球をハグする</h3>
+    <p>歴史ある場所と現代の最高峰の表現を結び、文化を「遠くから見るもの」から「誰もが参加するもの」へと変えてきた私たち。その根底にあるのが「Wrapping The Earth ─ 地球をハグする」という思想です。</p>
+    <p>文化という一枚の布で、地球をやさしく包み込む。掲げている「2400万人で、地球をハグする。」は、すでに集まった人数ではなく、このプロジェクトが象徴として掲げる目標です。</p>
+    <p>重要文化財を光で包み、迎賓館に立ち、万博で二つの国の書を交わらせてきた私たちが、次に立つのが、知の象徴であるこの講堂です。<b>2026年10月18日、東京大学・安田講堂。</b></p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">07</span><h2>リターンのご紹介</h2></header>
+  <div class="body">
+    <p>ご自身のスタイルに合わせて選べるリターンをご用意しました。会場に来られる方も、来られない方も、それぞれの形でこのプロジェクトに参加していただけます。</p>
+
+    <div class="ret">
+      <p class="price">01 ／ 10,000円</p>
+      <h4>【文京区の中高生1名を安田講堂へ】ONE SEAT, ONE FUTURE.</h4>
+      <p><b>あなたの1万円が、ひとりの中高生の席になります。</b>このプロジェクトの目標は、文京区の中高生100名を東京大学 安田講堂へお招きすることです。本コースへのご支援は、中高生1名の招待費用に充てさせていただきます。</p>
+      <p>ご支援くださった方には、感謝を込めて、イベント後のプレスリリースと当財団の公式Webサイトに、本イベントをともに作ってくださった方のお一人として、お名前を掲載させていただきます。</p>
+      <p><b>＜お届け内容＞</b><br>・お礼のメール<br>・イベントレポート（デジタル）<br>・プレスリリースにお名前掲載<br>・公式Webサイトにお名前掲載</p>
+      <p><b>＜ご支援の使いみち＞</b><br>・お一人分のご支援で、文京区の中高生1名を本イベントへご招待します<br>・お招きする中高生は、文京区内の中学校・高等学校および地域の団体を通じて募集します <span class="flag">導線確定後に文言確定</span><br>・保護者の方1名まで、同伴席をご用意します（費用は当財団が負担します）</p>
+      <p class="fine">※本コースに支援者様ご自身のご観覧席は含まれません。会場での観覧をご希望の方は、S席付きのコースをご検討ください。</p>
+    </div>
+
+    <div class="ret">
+      <p class="price">02 ／ 3,000円・5,000円</p>
+      <h4>【シンプル応援】来場せずに応援する</h4>
+      <p>本イベントの趣旨に共感し、「リターン品なしで純粋に応援したい」と思ってくださる方のためのコースです。ご支援への感謝を込めて、お礼のメールとイベントレポートをお送りします。</p>
+      <p><b>＜お届け内容＞</b><br>・お礼のメール<br>・イベントレポート（デジタル）</p>
+      <p class="fine">※本コースに会場のご観覧席は含まれません。<br>※3,000円〜5,000円のリターン内容は、金額を問わず同様です。</p>
+    </div>
+
+    <div class="ret">
+      <p class="price">03 ／ 30,000円・50,000円・100,000円</p>
+      <h4>【シンプル応援】お名前掲載つき</h4>
+      <p>リターン品なしで応援いただくコースです。お礼のメールとイベントレポートに加え、イベント開催後、当財団の公式Webサイトへ応援者様のお名前を掲載いたします。</p>
+      <p><b>＜お届け内容＞</b><br>・お礼のメール<br>・イベントレポート（デジタル）<br>・公式Webサイトにお名前掲載</p>
+      <p class="fine">※30,000円〜100,000円のリターン内容は、金額を問わず同様です。</p>
+    </div>
+
+    <div class="ret">
+      <p class="price">04 ／ 15,000円</p>
+      <h4>【クラファン特別席】S席で公演を観覧する</h4>
+      <p>クラウドファンディング限定の特別席・S席で本公演をご観覧いただけるコースです。一般では販売していないお席となります。</p>
+      <p><b>＜お届け内容＞</b><br>・会場S席 1席（クラウドファンディング限定枠）<br>・お礼のメール<br>・イベントレポート（デジタル）<br>・イベントオリジナルグッズ（クリアファイル）</p>
+      <p class="fine">＜チケットのお渡しについて＞<br>・電子チケットを2026年10月上旬にメールでお送りします。当日は受付にてご提示ください。<br>・お席は当財団にて指定させていただきます。</p>
+    </div>
+
+    <div class="ret">
+      <p class="price">05 ／ S席＋リハーサル見学</p>
+      <h4>【クラファン限定】誰もいない安田講堂を見る</h4>
+      <p>クラウドファンディング限定のS席に加え、開演前、まだ誰も入っていない安田講堂のリハーサルをご見学いただけます。</p>
+      <p><b>＜お届け内容＞</b><br>・会場S席 1席（クラウドファンディング限定枠）<br>・リハーサル見学（指定時間枠内での会場見学）<br>・お礼のメール<br>・イベントレポート（デジタル）<br>・イベントオリジナルグッズ（クリアファイル）</p>
+      <p class="fine">※リハーサル見学は指定時間枠内での会場見学です。特定の出演者の見学は保証されません。<br>※出演者との個別の写真撮影は含みません。</p>
+    </div>
+
+    <div class="ret">
+      <p class="price">06 ／ 出演者と応援する</p>
+      <h4>【窪塚洋介さんと応援するプラン】／【DOZAN11さん（三木道三さん）と応援するプラン】</h4>
+      <p>クラウドファンディング限定のS席に加え、リハーサル見学とオリジナルグッズをお届けします。各応援プランの支援者として、プレスリリース・公式Webサイトにお名前を掲載させていただきます。</p>
+      <p><b>＜お届け内容＞</b><br>・会場S席 1席（クラウドファンディング限定枠）<br>・リハーサル見学（指定時間枠内での会場見学）<br>・イベントオリジナルグッズ（クリアファイル）<br>・お礼のメール<br>・イベントレポート（デジタル）<br>・各応援プランの支援者として、プレスリリース＆公式Webサイトにお名前を掲載</p>
+      <p class="fine">※リハーサル見学は指定時間枠内での会場見学です。特定の出演者の見学は保証されません。<br>※出演者との個別の写真撮影は含みません。</p>
+    </div>
+
+    <div class="ret">
+      <p class="price">07 ／ 法人協賛</p>
+      <h4>【ゴールド協賛（限定2社）】／【プラチナ協賛（限定1社）】</h4>
+      <p>企業様として本公演を応援いただくコースです。プレスリリースへの企業名掲載と会場でのロゴ掲出に加え、S席チケットをお届けします。社員の皆様やお取引先を安田講堂へお招きいただけます。</p>
+      <p><b>＜ゴールド協賛／限定2社＞</b><br>・会場S席 5席<br>・会場でのロゴ掲出<br>・プレスリリースに企業名を掲載<br>・公式Webサイトに企業名・ロゴを掲載<br>・イベントレポート（デジタル）／お礼のメール</p>
+      <p><b>＜プラチナ協賛／限定1社＞</b><br>・会場S席 10席<br>・会場でのロゴ掲出（最大サイズ）<br>・プレスリリースに企業名を掲載<br>・公式Webサイトに企業名・ロゴを掲載<br>・イベントレポート（デジタル）／お礼のメール</p>
+      <p class="fine">＜チケットのお渡しについて＞<br>・電子チケットを2026年10月上旬にメールでお送りします。当日は受付にてご提示ください。<br>・お席は当財団にて指定させていただきます。</p>
+    </div>
+
+    <p class="fine" style="margin-top:26px;">＜座席配置のイメージ＞クラウドファンディングで選べる席は、一般では販売していない特別席です。席の配置については、変更になる可能性がございます。予めご了承くださいませ。</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">08</span><h2>スケジュール</h2></header>
+  <div class="body">
+    <p>プロジェクトの成功と、安田講堂での本番に向け、以下のスケジュールで準備を進めてまいります。</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>日付</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td class="n">2026.09.13</td><td>クラウドファンディング公開</td></tr>
+          <tr><td class="n">2026.10.18</td><td>本番／東京大学 安田講堂（16:00 START ／ 20:00 END予定）</td></tr>
+          <tr><td class="n">2026.10.31</td><td>クラウドファンディング終了</td></tr>
+          <tr><td class="n">本番後</td><td>デジタルアーカイブ公開／リターン発送／お名前掲載</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">09</span><h2>資金の使い道</h2></header>
+  <div class="body">
+    <p>今回のクラウドファンディングでは、まず<b>文京区の中高生100名とそのご家族</b>を本イベントへお招きすることを目標としています。招待コースへのご支援は、招待に必要な費用として活用します。</p>
+    <p>また本公演の収益については、開催経費を除いた上で、今後の文化継承・教育支援活動、AIを活用した文化の記録・デジタルアーカイブなどへつなげていきます。</p>
+    <ul>
+      <li>教育・文化プログラムの実施</li>
+      <li>AIリテラシー教育コンテンツの制作</li>
+      <li>文化のデジタルアーカイブ化</li>
+      <li>地域文化の記録と、若い世代の育成</li>
+    </ul>
+    <p>決定した使途と活動の経過は、活動報告としてわかりやすくお伝えしていきます。</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">10</span><h2>最後に ─ 紡ぐ人が、未来を奏でる。</h2></header>
+  <div class="body">
+    <p>文化は、自然に残るのではありません。次の時代へ紡ごうと決め、伝え、支える人の手によって、はじめて次の世代へ渡されていきます。</p>
+    <p>2026年10月18日、東京大学・安田講堂。この特別な一夜を、<b>同じ街に暮らす文京区の中高生100名とそのご家族にも</b>届けたい。</p>
+
+    <div class="pull"><p>あなたの1万円が、ひとりの中高生の席になります。<br><b>ONE SEAT, ONE FUTURE.</b></p></div>
+
+    <p>会場の一席に座ること。遠くから寄付で応援すること。この活動を誰かに伝えること。そのひとつひとつが、文化と教育の未来を支える行動です。</p>
+    <p><b>一人の英雄ではなく、無数の小さな参加で。</b>その最初のひとつに、あなたがなってください。</p>
+    <p>皆様のご支援を、心よりお待ちしています。2026年10月18日、東京大学・安田講堂でお会いしましょう。</p>
+
+    <h4>公式SNS・関連リンク</h4>
+    <ul>
+      <li>公式Webサイト：<a href="https://ecs-foundation.or.jp/timeline/">ecs-foundation.or.jp/timeline/</a></li>
+      <li>イベント特設ページ：<a href="https://wrapping-the-earth-tokyo-2026.vercel.app/">wrapping-the-earth-tokyo-2026.vercel.app</a></li>
+      <li>公式Instagram：<a href="https://www.instagram.com/wrapping.the.earth/">@wrapping.the.earth</a></li>
+      <li>公式YouTube：<a href="https://www.youtube.com/@WrappingtheEarth2400/videos">@WrappingtheEarth2400</a></li>
+      <li>公式LINE：<a href="https://lin.ee/zTFodlc">lin.ee/zTFodlc</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="sec">
+  <header><span class="n">11</span><h2>よくあるご質問</h2><span class="badge">4問追加</span></header>
+  <div class="body">
+    <div class="faq"><p class="q">Q1. CAMPFIREと通常チケットは何が違いますか？</p>
+      <p class="a">CAMPFIREでは、来場しない寄付コースと、観覧チケット付きの支援コースをご用意しています。通常チケットは、チケットぴあ等で販売する観覧のみのチケット（一律10,000円）です。</p></div>
+
+    <div class="faq"><p class="q">Q2. 当日会場へ行けなくても応援できますか？</p>
+      <p class="a">はい。来場を伴わない応援・寄付コースを3,000円からご用意しています。</p></div>
+
+    <div class="faq"><p class="q">Q3. お招きする中高生は、どのように決まりますか？</p>
+      <p class="a">文京区内の中学校・高等学校、および地域の団体を通じて募集します。応募多数の場合の取り扱いを含む詳細は、決定次第、活動報告にてお知らせします。<span class="flag">導線確定後に文言確定</span></p></div>
+
+    <div class="faq"><p class="q">Q4. 保護者も一緒に参加できますか？</p>
+      <p class="a">はい。終演が20時となるため、保護者の方1名まで同伴席をご用意します（費用は当財団が負担します）。<span class="flag">要決裁</span></p></div>
+
+    <div class="faq"><p class="q">Q5. 文京区以外の中高生は参加できませんか？</p>
+      <p class="a">今回の招待枠は、安田講堂が所在する文京区の中高生を対象としています。それ以外の方は、通常の観覧チケット、またはCAMPFIREのS席付きコースからご参加いただけます。</p></div>
+
+    <div class="faq"><p class="q">Q6. すでに50名の招待枠があると聞きました。このクラウドファンディングとの関係は？</p>
+      <p class="a">当財団として先行して50名分の招待枠を設けています。本プロジェクトは、その輪をさらに100名分ひろげ、あわせて150名をお招きするための取り組みです。<span class="flag">確定度を確認のうえ確定</span></p></div>
+
+    <div class="faq"><p class="q">Q7. 支援金は何に使われますか？</p>
+      <p class="a">本公演はチャリティーとして実施し、開催までにかかった経費を除いた収益の全額を、文化継承・教育支援の活動に充てることを予定しています。使途は「教育・文化プログラムの実施」「AIリテラシー教育コンテンツの制作」「文化のデジタルアーカイブ化」「地域文化の記録と若い世代の育成」の4分野です。</p></div>
+
+    <div class="faq"><p class="q">Q8. 出演者やプログラムは確定していますか？</p>
+      <p class="a">現在掲載している内容は準備段階の構成です。出演者、登壇者、実施順、各パートの内容は、会場条件や関係者調整により追加・変更となる場合があります。決定次第、活動報告でお知らせします。</p></div>
+
+    <div class="faq"><p class="q">Q9. 主催とチケット販売はどの団体ですか？</p>
+      <p class="a">主催は公益財団法人教育文化セキュリティ財団、通常チケットの販売は株式会社クロノス財団です。両者は別法人で、株式会社クロノス財団は本公演の企画・制作およびチケット販売を担うパートナーです。なお当財団は、2026年8月1日付で公益財団法人クロノス保全財団から名称を変更しました。</p></div>
+
+    <div class="faq"><p class="q">Q10. リターンが変更・中止になることはありますか？</p>
+      <p class="a">出演者の都合や会場条件により、リターンの内容を変更させていただく場合があります。その場合は速やかに活動報告でご説明します。なお、リハーサル見学は指定時間枠内での会場見学であり、特定アーティストの見学を保証するものではありません。</p></div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<div class="open">
+  <h2>公開前に確定が必要な6件</h2>
+  <ul>
+    <li><b>既存50名の内訳と確定度</b> ─ 中高生か／親子か、確定か打診中か。<b>04冒頭とQ6の根幹の数字。</b>ここが動くと本文の一行目が変わります。</li>
+    <li><b>文京区の中高生への募集導線</b> ─ 文京区教育委員会／区内の中学・高校／地域団体。打診中なら「打診中」と書ける形まで。空白のままだと「本当に100名集まるのか」に答えられません。</li>
+    <li><b>同伴席を財団負担とする決裁</b> ─ 最大100席分の追加。会場キャパ・座席数・原価への影響を確認。</li>
+    <li><b>渡邉教授の実績記載と、根津3D制作の公表可否</b> ─ アーカイブ各プロジェクト名の表記、「記憶の解凍」の説明の正確さ、そして根津神社デジタルアーカイブの制作を現時点で公表してよいか。<b>03のセクション全体の前提です。</b></li>
+    <li><b>参加予定者の実名掲載範囲</b> ─ 高木琢也氏、小池一弘氏、稲葉信氏、茂木哲也氏をCAMPFIREでも実名で載せるか。ご本人の掲載許諾の範囲に合わせてください。</li>
+    <li><b>CAMPFIRE全ページの「渡邉」→「渡邉」修正</b> ─ 特設サイト・Instagram・当日配布物まで。表記が割れたまま公開しない。</li>
+  </ul>
+</div>
+
+</div>
