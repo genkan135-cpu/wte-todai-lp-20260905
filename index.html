@@ -124,6 +124,13 @@
   .open li{margin-bottom:.6em;color:var(--ink-2);}
   .open li b{color:var(--ink);}
 
+  /* --- 本文コピー時にUI部品が混ざらないようにする --- */
+  .eyebrow, .meta, .howto,
+  .sec > header .n, .sec > header .badge,
+  .flag, .ret .price{
+    -webkit-user-select:none; user-select:none;
+  }
+
   a{color:var(--accent);word-break:break-all;}
   a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
@@ -137,8 +144,8 @@
 <div class="wrap">
 
 <header class="mast">
-  <p class="eyebrow">CAMPFIRE Project 965944 — Full Copy v1.2</p>
-  <h1>東京大学・安田講堂へ｜文京区の中高生とご家族100名を招待したい</h1>
+  <p class="eyebrow">CAMPFIRE Project 965944 — Full Copy v1.3</p>
+  <h1>東京大学・安田講堂へ<br>文京区の中高生とご家族100名を招待したい</h1>
   <p class="lede">改稿をすべて反映した、CAMPFIREページ本文の全文原稿。画像・図版は別途差し込み。渡邉英徳教授を背骨に据え、招待対象を文京区の中高生とご家族へ切り替えた最新版です。</p>
   <div class="meta">
     <span><b>公開予定</b> 2026-09-13</span>
@@ -149,7 +156,7 @@
 </header>
 
 <div class="howto">
-  <b>この原稿の読み方</b>　セクション番号は改稿後の並びです（<b>03 が新設</b>、以降が1つずつ繰り下がります）。<span class="flag">要確認</span> の付いた箇所は、事実確認が済んでから確定してください。<b>末尾に未確定リストをまとめています。</b>
+  <b>この原稿の読み方</b>　セクション番号は改稿後の並びです（<b>03 が新設</b>、以降が1つずつ繰り下がります）。<span class="flag">要確認</span> の付いた箇所は、事実確認が済んでから確定してください。<b>末尾に未確定リストをまとめています。</b><br>セクション番号・バッジ・要確認タグ・この注記は<b>選択できません</b>。本文をドラッグしてコピーすると、原稿の文章だけが取れます。
 </div>
 
 <!-- ============================================================ -->
